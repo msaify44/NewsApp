@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    name: Build App
+    runs-on: macos-26
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Show Xcode version
+        run: xcodebuild -version
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
+      
+      - name: Install fastlane
+        run: |
+          gem install fastlane
+      
+      - name: Install dependencies (if any)
+        run: |
+          if [ -f "Gemfile" ]; then
+            bundle install
+          fi
+      
+      - name: Build with fastlane
+        run: |
+          fastlane build
+

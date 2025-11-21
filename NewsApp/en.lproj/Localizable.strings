@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  NewsApp
+  
+  Created by Murtuza Saify on 21/11/2025.
+*/
+
+/* Navigation Titles */
+"navigation.title.most_popular" = "NY Times Most Popular";
+"navigation.title.article" = "Article";
+
+/* Error Messages */
+"error.title" = "Oops! Something went wrong";
+"error.description" = "Unable to load articles. Please check your internet connection and try again.";
+"error.button.retry" = "Retry";
+
