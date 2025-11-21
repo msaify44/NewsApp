@@ -16,21 +16,25 @@ struct DIContainerTests {
     
     @Test("Factory registration creates new instance on each resolution")
     func testFactoryRegistrationCreatesNewInstances() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
         container.register(TestService.self) { _ in
             TestServiceImpl()
         }
         
+        // Act
         let first = container.resolve(TestService.self)
         let second = container.resolve(TestService.self)
         
+        // Assert
         #expect(first.id != second.id, "Factory should create new instances")
     }
     
     @Test("Factory can resolve dependencies")
     func testFactoryCanResolveDependencies() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
         container.register(TestRepository.self) { _ in
             TestRepositoryImpl(name: "TestRepo")
@@ -41,8 +45,10 @@ struct DIContainerTests {
             return TestDependentService(repository: repository)
         }
         
+        // Act
         let service = container.resolve(TestService.self) as? TestDependentService
         
+        // Assert
         #expect(service != nil)
         #expect(service?.repository.name == "TestRepo")
     }
@@ -51,15 +57,18 @@ struct DIContainerTests {
     
     @Test("Singleton registration returns same instance")
     func testSingletonReturnsSameInstance() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
         container.registerSingleton(TestService.self) { _ in
             TestServiceImpl()
         }
         
+        // Act
         let first = container.resolve(TestService.self)
         let second = container.resolve(TestService.self)
         
+        // Assert
         #expect(first.id == second.id, "Singleton should return same instance")
     }
     
@@ -68,23 +77,29 @@ struct DIContainerTests {
     
     @Test("resolveOptional returns nil for unregistered type")
     func testResolveOptionalReturnsNilForUnregisteredType() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
+        // Act
         let result = container.resolveOptional(TestService.self)
         
+        // Assert
         #expect(result == nil)
     }
     
     @Test("resolveOptional returns value for registered type")
     func testResolveOptionalReturnsValueForRegisteredType() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
         container.register(TestService.self) { _ in
             TestServiceImpl(id: "TestID")
         }
         
+        // Act
         let result = container.resolveOptional(TestService.self)
         
+        // Assert
         #expect(result != nil)
         #expect(result?.id == "TestID")
     }
@@ -93,14 +108,17 @@ struct DIContainerTests {
     
     @Test("resolve returns value for registered type")
     func testResolveReturnsValueForRegisteredType() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
         container.register(TestService.self) { _ in
             TestServiceImpl(id: "ResolvedID")
         }
         
+        // Act
         let result = container.resolve(TestService.self)
         
+        // Assert
         #expect(result.id == "ResolvedID")
     }
     
@@ -108,14 +126,17 @@ struct DIContainerTests {
     
     @Test("removingAll clears all registrations")
     func testRemovingAllClearsRegistrations() {
-        let container = DefaultDIContainer()
+        // Arrange
+        let container = DIContainer()
         
         container.register(TestService.self) { _ in
             TestServiceImpl()
         }
         
+        // Act
         _ = container.removingAll()
         
+        // Assert
         let result = container.resolveOptional(TestService.self)
         
         #expect(result == nil)

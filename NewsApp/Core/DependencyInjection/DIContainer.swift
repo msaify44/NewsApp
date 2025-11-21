@@ -7,22 +7,10 @@
 
 import Foundation
 
-// MARK: - Registry Container
-
-protocol DIContainer: AnyObject {
-    // Registration
-    func register<T>(_ type: T.Type, factory: @escaping (DIContainer) -> T)
-    func registerSingleton<T>(_ type: T.Type, factory: @escaping (DIContainer) -> T)
-
-    // Resolution
-    func resolve<T>(_ type: T.Type) -> T
-    func resolveOptional<T>(_ type: T.Type) -> T?
-
-    // Utilities
-    func removingAll() -> Self
-}
-
-final class DefaultDIContainer: DIContainer {
+final class DIContainer {
+    
+    static let shared = DIContainer()
+    
     private enum Scope {
         case factory((DIContainer) -> Any)
         case singleton(make: (DIContainer) -> Any, cached: Any?)
