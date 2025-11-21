@@ -18,7 +18,8 @@ struct MostViewArticlesURLDescriptorTests {
     
     @Test("Returns correct host URL")
     func testReturnsCorrectHost() {
-        let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay)
+        let apiConfig = TestMocks.makeAPIConfig(baseURL: URL(string: "https://api.nytimes.com")!)
+        let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay, apiConfig: apiConfig)
         
         #expect(descriptor.host.absoluteString == "https://api.nytimes.com")
     }
@@ -27,7 +28,7 @@ struct MostViewArticlesURLDescriptorTests {
     
     @Test("Path contains correct base path")
     func testPathContainsCorrectBasePath() {
-        let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay)
+        let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay, apiConfig: TestMocks.makeAPIConfig())
         
         #expect(descriptor.path.contains("svc/mostpopular/v2/mostviewed/all-sections"))
     }
@@ -36,7 +37,7 @@ struct MostViewArticlesURLDescriptorTests {
     
     @Test("Returns GET method")
     func testReturnsGETMethod() {
-        let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay)
+        let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay, apiConfig: TestMocks.makeAPIConfig())
         
         #expect(descriptor.method == .get)
     }
@@ -46,7 +47,7 @@ struct MostViewArticlesURLDescriptorTests {
     @Test("Returns query items with API key")
     func testReturnsQueryItemsWithAPIKey() {
         // Arrange
-        let apiConfig = DefaultAPIConfig()
+        let apiConfig = TestMocks.makeAPIConfig(baseURL: URL(string: "https://api.nytimes.com")!)
         let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay,
                                                        apiConfig: apiConfig)
         
@@ -68,7 +69,7 @@ struct MostViewArticlesURLDescriptorTests {
     @Test("Built URLRequest has correct full URL")
     func testBuiltURLRequestHasCorrectFullURL() throws {
         // Arrange
-        let apiConfig = DefaultAPIConfig()
+        let apiConfig = TestMocks.makeAPIConfig(baseURL: URL(string: "https://api.nytimes.com")!)
         let descriptor = FetchMostViewedArticlesURLDescriptor(period: .oneDay, apiConfig: apiConfig)
         let request = try descriptor.buildURLRequest()
         

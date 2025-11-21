@@ -20,7 +20,8 @@ struct DefaultArticleRemoteDatasourceTests {
     func testFetchMostViewedArticlesSuccess() async throws {
         // Arrange
         let mockService = MockServiceClient()
-        let datasource = DefaultArticleRemoteDatasource(service: mockService)
+        let apiConfig = TestMocks.makeAPIConfig(baseURL: URL(string: "https://api.nytimes.com")!, apiKey: "TEST-KEY")
+        let datasource = DefaultArticleRemoteDatasource(service: mockService, apiConfig: apiConfig)
         
         let expectedResult = TestMocks.createMockArticleResultsDTO()
         mockService.mockResult = expectedResult
@@ -39,7 +40,8 @@ struct DefaultArticleRemoteDatasourceTests {
     func testCreatesCorrectURLDescriptor() async throws {
         // Arrange
         let mockService = MockServiceClient()
-        let datasource = DefaultArticleRemoteDatasource(service: mockService)
+        let apiConfig = TestMocks.makeAPIConfig(baseURL: URL(string: "https://api.nytimes.com")!, apiKey: "TEST-KEY")
+        let datasource = DefaultArticleRemoteDatasource(service: mockService, apiConfig: apiConfig)
         
         mockService.mockResult = TestMocks.createMockArticleResultsDTO()
         
@@ -63,7 +65,7 @@ struct DefaultArticleRemoteDatasourceTests {
     func testPropagatesError() async throws {
         // Arrange
         let mockService = MockServiceClient()
-        let datasource = DefaultArticleRemoteDatasource(service: mockService)
+        let datasource = DefaultArticleRemoteDatasource(service: mockService, apiConfig: TestMocks.makeAPIConfig())
         
         let transportError = TestMocks.createMockTransportError()
         mockService.mockError = ServiceError.transport(transportError)

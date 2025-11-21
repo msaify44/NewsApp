@@ -12,7 +12,13 @@ protocol APIConfig {
     var apiKey: String { get }
 }
 
-struct DefaultAPIConfig: APIConfig {
+/// Both config looks same but can be differentiated based on dev and prod environments.
+struct DevelopmentAPIConfig: APIConfig {
+    var baseURL: URL { URL(string: "https://api.nytimes.com")! }
+    var apiKey: String { "uBzMdN85lv7Zrodln5qnqoi40JUcxQTi" }
+}
+
+struct ProductionAPIConfig: APIConfig {
     var baseURL: URL { URL(string: "https://api.nytimes.com")! }
     var apiKey: String { "uBzMdN85lv7Zrodln5qnqoi40JUcxQTi" }
 }

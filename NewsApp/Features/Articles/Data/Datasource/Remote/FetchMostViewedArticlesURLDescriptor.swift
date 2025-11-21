@@ -13,7 +13,7 @@ struct FetchMostViewedArticlesURLDescriptor: URLDescriptor {
     private let apiConfig: APIConfig
     
     init(period: Period,
-         apiConfig: APIConfig = DefaultAPIConfig()) {
+         apiConfig: APIConfig = APIConfigFactory.makeConfig()) {
         self.period = period
         self.apiConfig = apiConfig
     }
