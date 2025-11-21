@@ -193,4 +193,18 @@ enum TestMocks {
     static func createMockTransportError() -> URLError {
         URLError(.notConnectedToInternet)
     }
+    
+    // MARK: - Config Mocks
+    
+    static func makeAPIConfig(
+        baseURL: URL = URL(string: "https://api.test.com")!,
+        apiKey: String = "TEST-KEY"
+    ) -> APIConfig {
+        MockAPIConfig(baseURL: baseURL, apiKey: apiKey)
+    }
+}
+
+struct MockAPIConfig: APIConfig {
+    var baseURL: URL
+    var apiKey: String
 }

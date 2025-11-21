@@ -9,6 +9,10 @@ import Foundation
 
 extension DIContainer {
     func assemble()  {
+        self.register(APIConfig.self) { _ in
+            return APIConfigFactory.makeConfig()
+        }
+        
         self.register( FetchMostViewedArticlesUseCase.self) { container in
             return DefaultFetchMostViewedArticlesUseCase(repository: container.resolve(ArticleRepository.self))
         }
@@ -18,7 +22,10 @@ extension DIContainer {
         }
         
         self.register( ArticleRemoteDatasource.self) { container in
-            return DefaultArticleRemoteDatasource(service: container.resolve(ServiceClient.self))
+            return DefaultArticleRemoteDatasource(
+                service: container.resolve(ServiceClient.self),
+                apiConfig: container.resolve(APIConfig.self)
+            )
         }
         
         self.register( ServiceClient.self) { _ in
