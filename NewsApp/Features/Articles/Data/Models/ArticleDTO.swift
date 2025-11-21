@@ -13,7 +13,7 @@ struct ArticleDTO: Decodable {
     let abstract: String
     let publishedDate: String
     let byline: String?
-    let media: MediaDTO
+    let media: [MediaDTO]
     
     enum CodingKeys: String, CodingKey {
         case id, title, abstract, publishedDate = "published_date", byline, media
@@ -27,8 +27,8 @@ extension ArticleDTO {
             title: title,
             abstract: abstract,
             publishedDate: publishedDate,
-            thumbnailUrl: media.metadata.first(where: { $0.format == .thumbnail })?.url,
-            largeImageUrl: media.metadata.first(where: { $0.format == .medium210 })?.url,
+            thumbnailUrl: media.first?.metadata.first(where: { $0.format == .thumbnail })?.url,
+            largeImageUrl: media.first?.metadata.first(where: { $0.format == .medium440 })?.url,
             byLine: byline
         )
     }

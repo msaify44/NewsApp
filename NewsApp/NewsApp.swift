@@ -10,8 +10,12 @@ import SwiftUI
 @main
 struct NewsApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        
+        let diContainer = DIContainer.shared
+        diContainer.assemble()
+        
+        return WindowGroup {
+            ArticlesListView()
         }
     }
 }

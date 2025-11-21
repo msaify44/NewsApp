@@ -26,6 +26,7 @@ struct DefaultServiceClientTests {
     
     @Test("Successful request with JSON decoding")
     func testSuccessfulRequestWithJSONDecoding() async throws {
+        // Arrange
         resetMockURLProtocol()
         defer { resetMockURLProtocol() }
         
@@ -51,8 +52,10 @@ struct DefaultServiceClientTests {
             path: "/test"
         )
         
+        // Act
         let result: TestResponse = try await client.performRequest(descriptor: descriptor)
         
+        // Assert
         #expect(result == expectedResponse)
     }
 }
