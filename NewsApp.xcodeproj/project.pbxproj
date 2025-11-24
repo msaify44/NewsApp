@@ -29,14 +29,37 @@
 		B9DC0D6C2ECDBD39000C9235 /* NewsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B95EAD422ED439DD00173115 /* Exceptions for "NewsAppTests" folder in "NewsAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NewsApp.xctestplan,
+			);
+			target = B9DC0D612ECDBD39000C9235 /* NewsAppTests */;
+		};
+		B95EAD442ED43AF800173115 /* Exceptions for "NewsApp" folder in "NewsApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B9DC0D542ECDBD35000C9235 /* NewsApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B9DC0D572ECDBD35000C9235 /* NewsApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B95EAD442ED43AF800173115 /* Exceptions for "NewsApp" folder in "NewsApp" target */,
+			);
 			path = NewsApp;
 			sourceTree = "<group>";
 		};
 		B9DC0D652ECDBD39000C9235 /* NewsAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B95EAD422ED439DD00173115 /* Exceptions for "NewsAppTests" folder in "NewsAppTests" target */,
+			);
 			path = NewsAppTests;
 			sourceTree = "<group>";
 		};
@@ -385,6 +408,8 @@
 		};
 		B9DC0D772ECDBD39000C9235 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = B9DC0D572ECDBD35000C9235 /* NewsApp */;
+			baseConfigurationReferenceRelativePath = Config/Debug.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -394,6 +419,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewsApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -427,6 +453,8 @@
 		};
 		B9DC0D782ECDBD39000C9235 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = B9DC0D572ECDBD35000C9235 /* NewsApp */;
+			baseConfigurationReferenceRelativePath = Config/Release.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -436,6 +464,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewsApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
