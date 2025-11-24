@@ -1,0 +1,5 @@
+// Debug.xcconfig
+// Configuration file for Debug build configuration
+
+// Store host without protocol to avoid :// comment issue in xcconfig
+API_KEY = uBzMdN85lv7Zrodln5qnqoi40JUcxQTi

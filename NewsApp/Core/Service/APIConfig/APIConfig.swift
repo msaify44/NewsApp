@@ -12,13 +12,44 @@ protocol APIConfig {
     var apiKey: String { get }
 }
 
-/// Both config looks same but can be differentiated based on dev and prod environments.
+extension APIConfig {
+    
+    var apiKey: String {
+        guard let apiKey = Bundle.main.string(forInfoDictionaryKey: "API_KEY"),
+              !apiKey.isEmpty else {
+            fatalError("API_KEY not found or invalid in Info.plist.")
+        }
+        return apiKey
+    }
+}
+
 struct DevelopmentAPIConfig: APIConfig {
-    var baseURL: URL { URL(string: "https://api.nytimes.com")! }
-    var apiKey: String { "uBzMdN85lv7Zrodln5qnqoi40JUcxQTi" }
+    var baseURL: URL {
+        let fullURL = "https://api.nytimes.com"
+        guard let url = URL(string: fullURL) else {
+            fatalError("Invalid URL constructed from API_HOST: \(fullURL)")
+        }
+        return url
+    }
 }
 
 struct ProductionAPIConfig: APIConfig {
-    var baseURL: URL { URL(string: "https://api.nytimes.com")! }
-    var apiKey: String { "uBzMdN85lv7Zrodln5qnqoi40JUcxQTi" }
+    var baseURL: URL {
+        let fullURL = "https://api.nytimes.com"
+        guard let url = URL(string: fullURL) else {
+            fatalError("Invalid URL constructed from API_HOST: \(fullURL)")
+        }
+        return url
+    }
+}
+
+extension Bundle {
+    func string(forInfoDictionaryKey key: String) -> String? {
+        guard let value = object(forInfoDictionaryKey: key) as? String,
+              !value.isEmpty,
+              !value.hasPrefix("$(") else {
+            return nil
+        }
+        return value
+    }
 }
