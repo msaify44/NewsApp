@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "C44D5ABF-DAA6-4E50-80CF-FF24D4718790",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:NewsApp.xcodeproj",
+      "identifier" : "B9DC0D542ECDBD35000C9235",
+      "name" : "NewsApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NewsApp.xcodeproj",
+        "identifier" : "B9DC0D612ECDBD39000C9235",
+        "name" : "NewsAppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NewsApp.xcodeproj",
+        "identifier" : "B9DC0D6B2ECDBD39000C9235",
+        "name" : "NewsAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
