@@ -30,13 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B95EAD422ED439DD00173115 /* Exceptions for "NewsAppTests" folder in "NewsAppTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				NewsApp.xctestplan,
-			);
-			target = B9DC0D612ECDBD39000C9235 /* NewsAppTests */;
-		};
 		B95EAD442ED43AF800173115 /* Exceptions for "NewsApp" folder in "NewsApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -57,9 +50,6 @@
 		};
 		B9DC0D652ECDBD39000C9235 /* NewsAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				B95EAD422ED439DD00173115 /* Exceptions for "NewsAppTests" folder in "NewsAppTests" target */,
-			);
 			path = NewsAppTests;
 			sourceTree = "<group>";
 		};
