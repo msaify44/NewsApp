@@ -8,6 +8,8 @@
 import Foundation
 
 extension DIContainer {
+    
+    @MainActor
     func assemble()  {
         self.register(APIConfig.self) { _ in
             return APIConfigFactory.makeConfig()

@@ -11,7 +11,6 @@ import Foundation
 
 // MARK: - DefaultFetchMostViewedArticlesUseCase Tests
 
-@MainActor
 struct DefaultFetchMostViewedArticlesUseCaseTests {
     
     // MARK: - Success Cases

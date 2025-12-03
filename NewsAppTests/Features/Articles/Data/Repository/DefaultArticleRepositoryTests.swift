@@ -11,7 +11,6 @@ import Foundation
 
 // MARK: - DefaultArticleRepository Tests
 
-@MainActor
 struct DefaultArticleRepositoryTests {
     
     // MARK: - Success Cases
