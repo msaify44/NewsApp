@@ -10,8 +10,6 @@ import Foundation
 @testable import NewsApp
 
 // MARK: - DefaultArticleRemoteDatasource Tests
-
-@MainActor
 struct DefaultArticleRemoteDatasourceTests {
     
     // MARK: - Success Cases

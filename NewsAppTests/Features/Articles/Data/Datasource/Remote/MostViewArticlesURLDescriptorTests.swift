@@ -11,7 +11,6 @@ import Foundation
 
 // MARK: - MostViewArticlesURLDescriptor Tests
 
-@MainActor
 struct MostViewArticlesURLDescriptorTests {
     
     // MARK: - Host Tests
